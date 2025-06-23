@@ -38,6 +38,7 @@ Este projeto terá as seguintes funcionalidades:
 
   <!--Protótipos para as páginas (descrever quais páginas) foram elaborados, e podem ser encontrados em...-->
   ![Feed do Usuário](prototypes/SocialDisruption_Feed.png)
+  *Feed do usuário*
 
 <!--### 5. Referências
 
