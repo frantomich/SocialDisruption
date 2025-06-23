@@ -37,7 +37,13 @@ Este projeto terá as seguintes funcionalidades:
 ### 4. Protótipos
 
   <!--Protótipos para as páginas (descrever quais páginas) foram elaborados, e podem ser encontrados em...-->
-  ![Feed do Usuário](prototypes/SocialDisruption_Feed.png)
+
+  ![Tela de Login](prototypes/SocialDisruption-Login.png)
+  *Tela de login*
+
+  <br>
+  
+  ![Feed do Usuário](prototypes/SocialDisruption-Feed_do_Usuário.png)
   *Feed do usuário*
 
 <!--### 5. Referências
