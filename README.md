@@ -36,8 +36,8 @@ Este projeto terá as seguintes funcionalidades:
 <!-- Construir alguns protótipos para a aplicação, disponibilizá-los no Github e descrever o que foi considerado. //-->
 ### 4. Protótipos
 
-  Protótipos para as páginas (descrever quais páginas) foram elaborados, e podem ser encontrados em...
-  <!--![Feed do Usuário](prototypes/SocialDisruption-Feed.png)-->
+  <!--Protótipos para as páginas (descrever quais páginas) foram elaborados, e podem ser encontrados em...-->
+  ![Feed do Usuário](prototypes/SocialDisruption_Feed.png)
 
 <!--### 5. Referências
 
