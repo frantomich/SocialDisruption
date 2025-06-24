@@ -8,7 +8,7 @@
 
 ### Resumo
 
-Uma rede social simples para o trabalho final de Sistemas Web I, onde os usuários poderão criar e editar seu perfil, procurar por outros usuários e enviar-lhes solicitação de amizade, gerenciar sua lista de amigos, publicar postagens e acompanhar as atualizações de seus amigos, e, talvez, mais algumas coisas que a criatividade e o tempo permitirem, como postagem de fotos, comunidades, dentre outros.
+Uma rede social simples para o trabalho final de Sistemas Web I, onde os usuários poderão criar e editar seu perfil, procurar por outros usuários e enviar solicitações de amizade, gerenciar sua lista de amigos, publicar postagens e acompanhar as atualizações de seus amigos, e, talvez, mais algumas coisas que a criatividade e o tempo permitirem.
 
 <!-- Apresentar o tema. -->
 ### 1. Tema
@@ -31,9 +31,15 @@ Este projeto terá as seguintes funcionalidades:
 <!-- Apresentar restrições de funcionalidades e de escopo. -->
 ### 3. Restrições
 
-  Neste trabalho não serão considerados ...
+  Neste trabalho não serão considerados:
 
-<!-- Construir alguns protótipos para a aplicação, disponibilizá-los no Github e descrever o que foi considerado. //-->
+  - Recursos de curtidas;
+  - Recursos de comentários;
+  - Publicação de fotos;
+  - Publicação de vídeos;
+  - Chat entre usuários;
+  - Recuperação de conta.
+
 ### 4. Protótipos
 
   <!--Protótipos para as páginas (descrever quais páginas) foram elaborados, e podem ser encontrados em...-->
@@ -42,9 +48,24 @@ Este projeto terá as seguintes funcionalidades:
   *Tela de login*
 
   <br>
-  
-  ![Feed do Usuário](prototypes/SocialDisruption-Feed_do_Usuário.png)
+
+  ![Feed do Usuário](prototypes/SocialDisruption-User_Feed.png)
   *Feed do usuário*
+
+  <br>
+
+  ![Posts do Usuário](prototypes/SocialDisruption-User_Posts.png)
+  *Posts do usuário*
+
+  <br>
+
+  ![Criação de Novo Post](prototypes/SocialDisruption-New_Post.png)
+  *Criação de novo post*
+
+  <br>
+  
+  ![Perfil Visitado](prototypes/SocialDisruption-Profile.png)
+  *Perfil visitado*
 
 <!--### 5. Referências
 
