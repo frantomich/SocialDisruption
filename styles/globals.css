@@ -1,0 +1,40 @@
+/* Definição de Variáveis Globais */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root {
+    /* Paleta de Cores */
+    --fundo-superior: #3730a3;
+    --fundo-inferior: #111827;
+    --card-primario: #1f2937;
+    --card-secundario: #4f46e5;
+    --texto-primario: #ffffff;
+    --texto-secundario: #d1d5db;
+    --texto-link: #4338ca;
+    --input-fundo: #374151;
+    --input-borda: #4b5563;
+    --popup-sucesso: #22c55e;
+    --popup-erro: #ef4444;
+
+    /* Tipografia */
+    --fonte-principal: 'Inter', sans-serif;
+    --fonte-tamanho-h1: 36px;
+    --fonte-tamanho-h2: 30px;
+    --fonte-tamanho-p-large: 18px;
+    --fonte-tamanho-p-normal: 16px;
+    --fonte-tamanho-p-small: 14px;
+    --fonte-peso-regular: 400;
+    --fonte-peso-medium: 500;
+    --fonte-peso-bold: 700;
+
+    /* Efeitos e Sombreamento */
+    --sombra-card: 0px 20px 25px -5px rgba(0, 0, 0, 0.10);
+    --raio-card: 16px;
+}
+
+/*.inter-<uniquifier> {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}*/
