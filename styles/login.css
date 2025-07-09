@@ -1,7 +1,5 @@
 /* Definições de Estilo para a Página de Login */
 
-@import "styles/globals.css";
-
 .login-body {
     width: 100vw;
     height: 100vh;
@@ -155,6 +153,11 @@
     box-shadow: var(--sombra-card);
 }
 
+.login-card-form input[type="email"]:focus {
+    border-color: var(--card-secundario);
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.5);
+}
+
 .login-card-form input[type="password"] {
     width: 416px;
     height: 48px;
@@ -165,6 +168,11 @@
     box-shadow: var(--sombra-card);
 }
 
+.login-card-form input[type="password"]:focus {
+    border-color: var(--card-secundario);
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.5);
+}
+
 .login-card-form input[type="checkbox"] {
     width: 16px;
     height: 16px;
@@ -172,6 +180,37 @@
     border: 1px solid var(--input-borda);
     background-color: var(--input-fundo);
     box-shadow: var(--sombra-card);
+}
+
+.login-card-form input[type="checkbox"]:checked {
+    background-color: var(--card-secundario);
+    border-color: var(--card-secundario);
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.5);
+}
+
+.login-card-form button {
+    width: 416px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: var(--card-secundario);
+    box-shadow: var(--sombra-card);
+    color: var(--texto-primario);
+    font-family: var(--fonte-principal);
+    font-size: var(--fonte-tamanho-p-normal);
+    font-style: normal;
+    font-weight: var(--fonte-peso-bold);
+    line-height: normal;
+    border: none;
+}
+
+.login-card-form button:hover {
+    transform: scale(1.03);
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
 }
 
 .login-card-form a {
@@ -223,10 +262,8 @@
     height: 48px;
     justify-content: center;
     align-items: center;
-    gap: 10px;
     flex-shrink: 0;
     border-radius: 8px;
-    background: var(--card-secundario);
     box-shadow: var(--sombra-card);
 }
 

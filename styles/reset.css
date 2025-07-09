@@ -23,7 +23,7 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
-/* HTML5 display-role reset for older browsers */
+
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
@@ -47,7 +47,33 @@ table {
 	border-spacing: 0;
 }
 
-/* Uma adição comum para um melhor controle de layout */
+hr {
+  border: 0;
+  height: 1px;
+  background-color: #ccc;
+  margin: 1em 0;
+}
+
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  border: none;
+  padding: 0;
+  margin: 0;
+
+  outline: none;
+
+  background-color: transparent;
+  color: inherit;
+
+  font-family: inherit;
+  font-size: inherit;
+
+  border-radius: 0;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
 }

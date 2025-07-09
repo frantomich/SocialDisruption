@@ -18,8 +18,9 @@
 
     /* Tipografia */
     --fonte-principal: 'Inter', sans-serif;
-    --fonte-tamanho-h1: 36px;
-    --fonte-tamanho-h2: 30px;
+    --fonte-tamanho-h1: 28px;
+    --fonte-tamanho-h2: 24px;
+    --fonte-tamanho-h3: 16px;
     --fonte-tamanho-p-large: 18px;
     --fonte-tamanho-p-normal: 16px;
     --fonte-tamanho-p-small: 14px;
@@ -29,6 +30,7 @@
 
     /* Efeitos e Sombreamento */
     --sombra-card: 0px 20px 25px -5px rgba(0, 0, 0, 0.10);
+    --destaque: 0 0 0 2px rgba(79, 70, 229, 0.5);
     --raio-card: 16px;
 }
 
