@@ -340,7 +340,7 @@
     box-shadow: var(--sombra-card);
 }
 .friends-sidebar h1 {
-    font-size: var(--fonte-tamanho-h1);
+    font-size: var(--fonte-tamanho-h2);
     font-weight: var(--fonte-peso-bold);
     text-shadow: var(--sombra-card);
 }
