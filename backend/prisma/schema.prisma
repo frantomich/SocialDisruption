@@ -1,0 +1,75 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  email        String       @id
+  password     String
+  name         String
+  lastname     String
+  avatar       Bytes?
+  birthday     DateTime
+  country      Country
+  relationship Relationship
+  posts        Post[]       @relation("RelationAuthor")
+  as_requester Friendship[] @relation("RelationRequester")
+  as_requested Friendship[] @relation("RelationRequested")
+  created_at   DateTime     @default(now())
+  updated_at   DateTime     @updatedAt
+
+  @@index([email])
+}
+
+model Friendship {
+  requester          String
+  relation_requester User     @relation(name: "RelationRequester", fields: [requester], references: [email], onDelete: Cascade, onUpdate: Cascade)
+  requested          String
+  relation_requested User     @relation(name: "RelationRequested", fields: [requested], references: [email], onDelete: Cascade, onUpdate: Cascade)
+  status             Status
+  created_at         DateTime @default(now())
+  updated_at         DateTime @updatedAt
+
+  @@id([requester, requested])
+  @@index([requester, requested])
+}
+
+model Post {
+  id              Int      @id @default(autoincrement())
+  author          String
+  relation_author User     @relation(name: "RelationAuthor", fields: [author], references: [email], onDelete: Cascade, onUpdate: Cascade)
+  content         String
+  created_at      DateTime @default(now())
+
+  @@index([author])
+}
+
+enum Country {
+  Brasil
+  Portugal
+  Argentina
+}
+
+enum Relationship {
+  Solteiro
+  Namorando
+  Casado
+  Divorciado
+  Viúvo
+  Enrolado
+}
+
+enum Status {
+  Pendente
+  Aceito
+  Rejeitado
+  Desfeito
+}
