@@ -12,7 +12,8 @@ datasource db {
 }
 
 model User {
-  email        String       @id
+  id           Int          @id @default(autoincrement())
+  email        String       @unique
   password     String
   name         String
   lastname     String
@@ -26,14 +27,14 @@ model User {
   created_at   DateTime     @default(now())
   updated_at   DateTime     @updatedAt
 
-  @@index([email])
+  @@index([id, email])
 }
 
 model Friendship {
-  requester          String
-  relation_requester User     @relation(name: "RelationRequester", fields: [requester], references: [email], onDelete: Cascade, onUpdate: Cascade)
-  requested          String
-  relation_requested User     @relation(name: "RelationRequested", fields: [requested], references: [email], onDelete: Cascade, onUpdate: Cascade)
+  requester          Int
+  relation_requester User     @relation(name: "RelationRequester", fields: [requester], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  requested          Int
+  relation_requested User     @relation(name: "RelationRequested", fields: [requested], references: [id], onDelete: Cascade, onUpdate: Cascade)
   status             Status
   created_at         DateTime @default(now())
   updated_at         DateTime @updatedAt
@@ -44,8 +45,8 @@ model Friendship {
 
 model Post {
   id              Int      @id @default(autoincrement())
-  author          String
-  relation_author User     @relation(name: "RelationAuthor", fields: [author], references: [email], onDelete: Cascade, onUpdate: Cascade)
+  author          Int
+  relation_author User     @relation(name: "RelationAuthor", fields: [author], references: [id], onDelete: Cascade, onUpdate: Cascade)
   content         String
   created_at      DateTime @default(now())
 
@@ -70,6 +71,6 @@ enum Relationship {
 enum Status {
   Pendente
   Aceito
-  Rejeitado
+  Recusado
   Desfeito
 }
