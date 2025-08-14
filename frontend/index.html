@@ -7,6 +7,15 @@
     <link rel="icon" href="assets/favicon.png" type="image/png">
 </head>
 <body>
-    <h1>Social Disruption</h1>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const token = localStorage.getItem('token') || sessionStorage.getItem('token');
+            if (token) {
+                window.location.href = 'main.html';
+            } else {
+                window.location.href = 'login.html';
+            }
+        });
+    </script>
 </body>
 </html>
