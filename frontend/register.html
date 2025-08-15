@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles/reset.css">
     <link rel="stylesheet" href="styles/globals.css">
     <link rel="stylesheet" href="styles/register.css">
+    <script src="scripts/register.js" defer></script>
 </head>
 <body class="register-body">
     <form class="register-form" action="register" method="post">
@@ -31,9 +32,9 @@
                     <label for="country">País de origem:</label>
                     <select id="country" name="country" required>
                         <option value="" disabled selected>Selecione seu país</option>
-                        <option value="brasil">Brasil</option>
-                        <option value="portugal">Portugal</option>
-                        <option value="estados_unidos">Estados Unidos</option>
+                        <option value="Brasil">Brasil</option>
+                        <option value="Portugal">Portugal</option>
+                        <option value="Argentina">Argentina</option>
                     </select>
                 </div>
                 <div class="form-input">
@@ -44,18 +45,19 @@
                     <label for="relationship">Relacionamento:</label>
                     <select id="relationship" name="relationship" required>
                         <option value="" disabled selected>Selecione seu status</option>
-                        <option value="solteiro">Solteiro(a)</option>
-                        <option value="namorando">Namorando</option>
-                        <option value="casado">Casado(a)</option>
-                        <option value="divorciado">Divorciado(a)</option>
-                        <option value="viuvo">Viúvo(a)</option>
-                        <option value="enrolado">Enrolado(a)</option>
+                        <option value="Solteiro">Solteiro(a)</option>
+                        <option value="Namorando">Namorando</option>
+                        <option value="Casado">Casado(a)</option>
+                        <option value="Divorciado">Divorciado(a)</option>
+                        <option value="Viúvo">Viúvo(a)</option>
+                        <option value="Enrolado">Enrolado(a)</option>
                     </select>
                 </div>
             </div>
             <div class="form-group-col">
-                <img src="assets/user.png" alt="User Avatar">
-                <button type="button">Foto</button>
+                <img src="assets/user.png" alt="User Avatar" id="avatar-preview">
+                <input type="file" id="avatar-input" name="avatar" accept="image/*" style="display: none;">
+                <button type="button" id="avatar-button">Foto</button>
             </div>
         </div>
         <div class="form-group-row">
