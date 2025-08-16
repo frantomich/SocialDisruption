@@ -17,7 +17,7 @@ model User {
   password     String
   name         String
   lastname     String
-  avatar       Bytes?
+  avatar       String?
   birthday     DateTime
   country      Country
   relationship Relationship
@@ -64,7 +64,7 @@ enum Relationship {
   Namorando
   Casado
   Divorciado
-  Viúvo
+  Viuvo
   Enrolado
 }
 
