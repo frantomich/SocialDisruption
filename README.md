@@ -1,6 +1,6 @@
 # SocialDisruption
 
-# **CSI606-2025-01 - Proposta de Trabalho Final**
+# **CSI606-2025-01 - Trabalho Final - Resultados**
 
 ## *Discente: Franklin Liesner Tomich*
 
