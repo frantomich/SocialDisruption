@@ -5,6 +5,6 @@ const loginRouter = Router();
 const loginController = new LoginController();
 
 // Rota de autenticação
-loginRouter.post('/api/login', loginController.authenticate);
+loginRouter.post('/api/login', loginController.login);
 
 export default loginRouter;

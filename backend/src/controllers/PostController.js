@@ -1,6 +1,7 @@
 import { prisma } from "../database/client.js";
 
 export default class PostController {
+    // Cria um novo post:
     async createPost(request, response) {
         const { author, content } = request.body;
 
@@ -27,8 +28,10 @@ export default class PostController {
         }
     }
 
+    // Busca posts por autor:
     async getPosts(request, response) {
-        const { author } = request.body;
+        
+        const { author } = request.params;
 
         // Verifica se o autor está presente:
         if (!author) {
@@ -38,8 +41,20 @@ export default class PostController {
         try {
             // Busca os posts do autor:
             const posts = await prisma.post.findMany({
-                where: { author },
-                orderBy: { created_at: 'desc' }
+                where: { author: parseInt(author) },
+                orderBy: { created_at: 'desc' },
+                select: {
+                    id: true,
+                    author: true,
+                    content: true,
+                    created_at: true,
+                    authors: {
+                        select: {
+                            name: true,
+                            lastname: true
+                        }
+                    }
+                }
             });
 
             // Verifica se existem posts:

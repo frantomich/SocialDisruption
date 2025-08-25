@@ -4,6 +4,7 @@ import loginRouter from './routes/LoginRouter.js';
 import userRouter from './routes/UserRouter.js';
 import friendshipRouter from './routes/FriendshipRouter.js';
 import postRouter from './routes/PostRouter.js';
+import authenticationRouter from './routes/AuthenticationRouter.js';
 
 const api = express();
 const port = 3000;
@@ -16,6 +17,7 @@ api.use(loginRouter);
 api.use(userRouter);
 api.use(friendshipRouter);
 api.use(postRouter);
+api.use(authenticationRouter);
 
 // Iniciar API
 api.listen(port, () => {

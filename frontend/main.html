@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles/reset.css">
     <link rel="stylesheet" href="styles/globals.css">
     <link rel="stylesheet" href="styles/main.css">
+    <script src="scripts/main.js" defer></script>
 </head>
 <body class="main-body">
     <!--Barra Superior-->
@@ -17,11 +18,11 @@
         </div>
         <div class="top-bar-search">
             <img src="assets/icons/fluent-color-search-sparkle.svg" alt="Search Icon">
-            <input type="text" placeholder="Busque conexões...">
+            <input id="search-input" type="text" placeholder="Busque conexões...">
         </div>
-        <div class="top-bar-user">
-            <h1>Nome Sebrenome</h1>
-            <img src="assets/user.png" alt="User Avatar">
+        <div class="top-bar-user" id="top-bar-user">
+            <h1 id="user-name">---</h1>
+            <img id="user-avatar" src="assets/user.png" alt="User Avatar">
         </div>
     </div>
 
@@ -32,73 +33,58 @@
         <div class="profile-sidebar">
             <div class="profile-sidebar-avatar">
                 <img src="assets/user.png" alt="User Avatar">
-                <h1>Nome Sobrenome</h1>
+                <h1 id="avatar-user-name">---</h1>
             </div>
+            <div class="profile-sidebar-buttons" id="profile-sidebar-buttons"></div>
             <hr>
             <div class="profile-sidebar-info">
                 <div>
                     <img src="assets/icons/fluent-color-flag.svg" alt="Flag Icon">
                     <div>
                         <h1>Nacionalidade:</h1>
-                        <p>---</p>
+                        <p id="info-nationality">---</p>
                     </div>
                 </div>
                 <div>
                     <img src="assets/icons/fluent-color-calendar.svg" alt="Calendar Icon">
                     <div>
                         <h1>Aniversário:</h1>
-                        <p>---</p>
+                        <p id="info-birthday">---</p>
                     </div>
                 </div>
                 <div>
                     <img src="assets/icons/fluent-color-person-heart.svg" alt="Heart Icon">
                     <div>
                         <h1>Relacionamento:</h1>
-                        <p>---</p>
+                        <p id="info-relationship">---</p>
                     </div>
                 </div>
             </div>
-            <p>Editar</p>
+            <p id="edit-profile">Editar</p>
         </div>
 
         <!--Área Central-->
-        <div class="central-area">
-            <div class="context-bar">
-                <div class="context-bar-posts">
+        <div class="central-area" id="central-area">
+            <div class="context-bar" id="context-bar">
+                <div class="posts-tab" id="posts-tab">
                     <h1>Seus Posts</h1>
                 </div>
-                <div class="context-bar-feed">
+                <div class="feed-tab" id="feed-tab">
                     <h1>Seu Feed</h1>
                 </div>
             </div>
-            <div class="new-post">
-                <h1>Nova Publicação</h1>
-                <textarea placeholder="O que você está pensando hoje?"></textarea>
-                <div class="new-post-buttons">
-                    <button class="post-button">Publicar</button>
-                    <button class="cancel-button">Cancelar</button>
+            <div class="post-area" id="post-area"></div>
+            <div class="new-post-card" id="new-post-card">
+                <div class="new-post-label" id="new-post-label">
+                    <h1>Nova Publicação</h1>
                 </div>
-            </div>
-            <div class="post-area">
-                <div class="post-card">
-                        <div class="post-avatar">
-                            <img src="assets/user.png" alt="User Avatar">
-                        </div>
-                    <div class="post-content">
-                        <div class="post-content-header">
-                            <div class="post-content-header-author">
-                                <h1>Nome Sobrenome</h1>
-                            </div>
-                            <div class="post-content-header-dot">
-                                <p>·</p>
-                            </div>
-                            <div class="post-content-header-date">
-                                <p>---</p>
-                            </div>
-                        </div>
-                        <p>bla bla bla...</p>
+                <form class="new-post-form" id="new-post-form">
+                    <textarea id="new-post-content" placeholder="O que você está pensando hoje?"></textarea>
+                    <div class="new-post-buttons">
+                        <button class="post-button" id="post-button">Publicar</button>
+                        <button class="cancel-button" id="cancel-button">Cancelar</button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
 
@@ -106,12 +92,7 @@
         <div class="friends-sidebar">
             <h1>Amigos</h1>
             <hr>
-            <div class="friends-sidebar-list">
-                <div>
-                    <img src="assets/user.png" alt="User Avatar">
-                    <h1>Nome Sobrenome</h1>
-                </div>
-            </div>
+            <div class="friend-list" id="friend-list"></div>
             <p>Editar</p>
         </div>
     </div>

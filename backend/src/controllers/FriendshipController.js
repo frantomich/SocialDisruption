@@ -1,6 +1,7 @@
 import { prisma } from '../database/client.js';
 
 export default class FriendshipController {
+    // Solicitar amizade:
     async requestFriendship(request, response) {
         const { requester, requested } = request.body;
 
@@ -32,15 +33,21 @@ export default class FriendshipController {
 
                 // Retorna a solicitação de amizade criada:
                 return response.status(201).json({ message: 'Friend request sent successfully!', friendship: newFriendship });
-
+            
             } else if ((existingRequest.status === 'Recusado') || (existingRequest.status === 'Desfeito')) {
                 // Se a solicitação foi recusada ou desfeita, atualiza o status para 'Pendente':
                 const updatedFriendship = await prisma.friendship.update({
                     where: {
-                        requester: existingRequest.requester,
-                        requested: existingRequest.requested
+                        requester_requested: {
+                            requester: existingRequest.requester,
+                            requested: existingRequest.requested
+                        }
                     },
-                    data: { status: 'Pendente' }
+                    data: { 
+                        requester,
+                        requested,
+                        status: 'Pendente' 
+                    }
                 });
 
                 return response.status(200).json({ message: 'Friend request re-sent successfully!', friendship: updatedFriendship });
@@ -55,13 +62,17 @@ export default class FriendshipController {
         }
     }
 
+    // Buscar solicitação de amizade entre dois usuários:
     async getFriendship(request, response) {
-        const { requester, requested } = request.body;
-
+        const { user1, user2 } = request.params;
+        
         // Verifica se as entradas estão presentes:
-        if (!requester || !requested) {
+        if (!user1 || !user2) {
             return response.status(400).json({ message: "Requester and requested are required!", friendship: null });
         }
+
+        const requester = parseInt(user1);
+        const requested = parseInt(user2);
 
         try {
             // Busca a solicitação de amizade:
@@ -88,13 +99,15 @@ export default class FriendshipController {
         }
     }
 
+    // Buscar amigos por status:
     async getFriends(request, response) {
-        const { requester, status } = request.body;
-
+        const { user, status } = request.params;
         // Verifica se o solicitante está presente:
-        if (!requester) {
+        if (!user) {
             return response.status(400).json({ message: "Requester is required!", friends: null });
         }
+        
+        const requester = parseInt(user);
 
         try {
             // Busca as solicitações de amizade do solicitante:
@@ -130,6 +143,7 @@ export default class FriendshipController {
         }
     }
 
+    // Aceitar solicitação de amizade:
     async acceptFriendship(request, response) {
         const { requester, requested } = request.body;
 
@@ -178,6 +192,7 @@ export default class FriendshipController {
         }
     }
 
+    // Recusar solicitação de amizade:
     async declineFriendship(request, response) {
         const { requester, requested } = request.body;
 
@@ -226,6 +241,7 @@ export default class FriendshipController {
         }
     }
 
+    // Desfazer amizade:
     async undoFriendship(request, response) {
         const { requester, requested } = request.body;
         

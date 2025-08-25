@@ -6,6 +6,6 @@ const postController = new PostController();
 
 // Rotas de Post
 postRouter.post('/api/post', postController.createPost);
-postRouter.get('/api/posts', postController.getPosts);
+postRouter.get('/api/posts/:author', postController.getPosts);
 
 export default postRouter;

@@ -1,6 +1,10 @@
 import { prisma } from "../database/client.js";
+import jwt from "jsonwebtoken";
+
+const JWT_SECRET = process.env.JWT_SECRET;
 
 export default class UserController {
+    // Cria um novo usuário:
     async createUser(request, response) {
         const {email, password, name, lastname, avatar, birthday, country, relationship} = request.body;
         
@@ -52,8 +56,9 @@ export default class UserController {
         }
     }
 
+    // Busca um usuário pelo ID:
     async getUser(request, response) {
-        const { id } = request.body;
+        const { id } = request.params;
 
         // Verifica se o e-mail está presente:
         if (!id) {
@@ -63,7 +68,7 @@ export default class UserController {
         try {
             // Busca o usuário pelo ID:
             const user = await prisma.user.findUnique({
-                where: { id },
+                where: { id: parseInt(id) },
                 select: {
                     id: true,
                     email: true,
@@ -90,11 +95,12 @@ export default class UserController {
         }
     }
 
+    // Atualiza um usuário:
     async updateUser(request, response) {
         const { id, email, name, lastname, avatar, birthday, country, relationship } = request.body;
 
         // Verifica se o e-mail está presente:
-        if (!id || !email || !name || !lastname || !avatar || !birthday || !country || !relationship) {
+        if (!id || !email || !name || !lastname || !birthday || !country || !relationship) {
             return response.status(400).json({ message: "All fields are required!", user: null });
         }
 
@@ -132,6 +138,7 @@ export default class UserController {
         }
     }
     
+    // Exclui um usuário:
     async deleteUser(request, response) {
         const { id } = request.body;
 
@@ -162,6 +169,86 @@ export default class UserController {
         } catch (error) {
             console.error("Internal server error:", error);
             return response.status(500).json({ message: "Internal server error!", user: null });
+        }
+    }
+
+    // Busca o usuário da sessão atual:
+    async getSessionUser(request, response) {
+        const token = request.headers.authorization;
+        
+        // Verifica se o token está presente:
+        if (!token) {
+            return response.status(401).json({ message: "Token is missing!", user: null });
+        }
+
+        try {
+            // Decodifica o token:
+            const decoded = jwt.verify(token, JWT_SECRET);
+            
+            // Busca o usuário pelo ID:
+            const user = await prisma.user.findUnique({
+                where: { id: decoded.id },
+                select: {
+                    id: true,
+                    email: true,
+                    name: true,
+                    lastname: true,
+                    avatar: true,
+                    birthday: true,
+                    country: true,
+                    relationship: true
+                }
+            });
+
+            // Verifica se o usuário existe:
+            if (!user) {
+                return response.status(404).json({ message: "User not found!", user: null });
+            }
+
+            // Retorna o usuário encontrado:
+            return response.status(200).json({ message: "User found!", user });
+
+        } catch (error) {
+            console.error("Internal server error:", error);
+            return response.status(500).json({ message: "Internal server error!", user: null });
+        }
+    }
+
+    // Busca usuários pelo nome:
+    async findUsersByName(request, response) {
+        const { name } = request.params;
+
+        // Verifica se o nome está presente:
+        if (!name) {
+            return response.status(400).json({ message: "Name is required!", users: [] });
+        }
+
+        try {
+            // Busca usuários pelo nome:
+            const users = await prisma.user.findMany({
+                where: {
+                    name: {
+                        contains: name
+                    }
+                },
+                select: {
+                    id: true,
+                    email: true,
+                    name: true,
+                    lastname: true,
+                    avatar: true,
+                    birthday: true,
+                    country: true,
+                    relationship: true
+                }
+            });
+
+            // Retorna os usuários encontrados:
+            return response.status(200).json({ message: "Users found!", users });
+
+        } catch (error) {
+            console.error("Internal server error:", error);
+            return response.status(500).json({ message: "Internal server error!", users: [] });
         }
     }
 }

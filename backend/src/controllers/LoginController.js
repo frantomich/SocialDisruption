@@ -4,7 +4,8 @@ import jwt from "jsonwebtoken";
 const JWT_SECRET = process.env.JWT_SECRET;
 
 export default class LoginController {
-    async authenticate(request, response) {
+    // Autentica um usuário e gera um token JWT:
+    async login(request, response) {
         const { email, password, remember } = request.body;
 
         // Verifica se as entradas estão presentes:
@@ -15,7 +16,12 @@ export default class LoginController {
         try {
             // Busca o usuário pelo e-mail:
             const user = await prisma.user.findUnique({
-                where: { email }
+                where: { email },
+                select: {
+                    id: true,
+                    email: true,
+                    password: true
+                }
             });
 
             // Verifica se o usuário existe e se a senha está correta:
@@ -25,7 +31,7 @@ export default class LoginController {
 
             // Gera o token JWT:
             const expiresIn = remember ? "30d" : "1h";
-            const token = jwt.sign({id: user.id, email: user.email }, JWT_SECRET, { expiresIn });
+            const token = jwt.sign({id: user.id }, JWT_SECRET, { expiresIn });
 
             // Se a autenticação for bem-sucedida, retorna o token de acesso:
             return response.status(200).json({ message: "Authentication successful!", token: token });

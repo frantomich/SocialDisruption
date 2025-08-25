@@ -15,7 +15,13 @@
   --input-borda: #4b5563;
   --popup-sucesso: #22c55e;
   --popup-erro: #ef4444;
+  --btn-primario: #4f46e5;
+  --btn-confirmar: #15803d;
   --btn-cancelar: #B91C1C;
+  --btn-adicionar: #2563eb;
+  --btn-aceitar: #16a34a;
+  --btn-pendente: #4b5563;
+  --btn-excluir: #dc2626;
 
   /* Tipografia */
   --fonte-principal: 'Inter', sans-serif;

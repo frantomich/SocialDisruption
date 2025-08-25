@@ -31,24 +31,24 @@ model User {
 }
 
 model Friendship {
-  requester          Int
-  relation_requester User     @relation(name: "RelationRequester", fields: [requester], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  requested          Int
-  relation_requested User     @relation(name: "RelationRequested", fields: [requested], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  status             Status
-  created_at         DateTime @default(now())
-  updated_at         DateTime @updatedAt
+  requester  Int
+  requesters User     @relation(name: "RelationRequester", fields: [requester], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  requested  Int
+  requesteds User     @relation(name: "RelationRequested", fields: [requested], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  status     Status
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 
   @@id([requester, requested])
   @@index([requester, requested])
 }
 
 model Post {
-  id              Int      @id @default(autoincrement())
-  author          Int
-  relation_author User     @relation(name: "RelationAuthor", fields: [author], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  content         String
-  created_at      DateTime @default(now())
+  id         Int      @id @default(autoincrement())
+  author     Int
+  authors    User     @relation(name: "RelationAuthor", fields: [author], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  content    String
+  created_at DateTime @default(now())
 
   @@index([author])
 }
