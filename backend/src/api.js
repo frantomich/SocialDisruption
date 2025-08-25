@@ -7,7 +7,7 @@ import postRouter from './routes/PostRouter.js';
 import authenticationRouter from './routes/AuthenticationRouter.js';
 
 const api = express();
-const port = 3000;
+const port = 5000;
 
 api.use(cors());
 api.use(express.json());

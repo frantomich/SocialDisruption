@@ -41,6 +41,10 @@
     text-shadow: var(--sombra-card);
 }
 
+.top-bar-logo img {
+    height: 20px;
+}
+
 .top-bar-search {
     width: 100%;
     height: 30px;

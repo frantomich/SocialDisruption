@@ -1,4 +1,4 @@
-const API = 'http://localhost:3000/api';
+const API = 'http://localhost:5000/api';
 
 document.addEventListener('DOMContentLoaded', async() => {
     const token = localStorage.getItem('token') || sessionStorage.getItem('token');
@@ -31,7 +31,8 @@ document.addEventListener('DOMContentLoaded', async() => {
             const reader = new FileReader();
             reader.onload = (e) => {
                 avatarPreview.src = e.target.result;
-                avatar = e.target.result;
+                //avatar = e.target.result;
+                avatar = null; // Desativa o upload de avatar
             };
             reader.readAsDataURL(file);
         } else {
@@ -134,7 +135,7 @@ document.addEventListener('DOMContentLoaded', async() => {
         } else {
             // Realiza a atualização dos dados do usuário:
             try {
-                const response = await fetch(`http://localhost:3000/api/user`, {
+                const response = await fetch(`${API}/user`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'
