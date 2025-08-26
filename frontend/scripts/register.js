@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', async() => {
         if (!id) {
             // Realiza o registro do novo usuário:
             try {
-                const response = await fetch(`${API}/session/user`, {
+                const response = await fetch(`${API}/user`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

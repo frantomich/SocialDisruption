@@ -649,6 +649,10 @@
     text-shadow: var(--sombra-card);
 }
 
+.search-card-content:hover {
+    cursor: pointer;
+}
+
 .search-card-action {
     width: 10%;
     display: flex;

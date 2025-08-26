@@ -634,9 +634,21 @@ async function searchUsers() {
                 }
             });
 
+            document.getElementById(`search-card-action-${user.id}`).addEventListener('mouseover', () => {
+                const actionDiv = document.getElementById(`search-card-action-${user.id}`);
+                if (action === undoFriendshipDialogue) {
+                    actionDiv.title = 'Desfazer Amizade';
+                } else if (action === acceptFriendshipDialogue) {
+                    actionDiv.title = 'Aceitar ou Recusar Amizade';
+                } else if (action === requestFriendship) {
+                    actionDiv.title = 'Solicitar Amizade';
+                } else {
+                    actionDiv.title = 'Solicitação Pendente';
+                }
+            });
+            
             document.getElementById(`search-card-content-${user.id}`).addEventListener('click', () => {
                 searchInput.value = '';
-                searchResults.style.display = 'none';
                 loadMainPage(user.id);
             });
         }
